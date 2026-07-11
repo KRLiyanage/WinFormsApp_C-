@@ -55,6 +55,59 @@ namespace StaffDirectory
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            using OpenFileDialog dlg = new()
+            {
+                Title = "Open Staff List",
+                Filter = "Text File (*.txt)|*.txt|All Files (*.*)|*.*"
+            };
+
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                LoadStaffFormFile(dlg.FileName);
+            }
+        }
+
+        private void LoadStaffFormFile(string fileName)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void customizeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ApplyListClor();
+            ApplyListFornt();
+        }
+
+        private void ApplyListFornt()
+        {
+            using ColorDialog dlg = new();
+            dlg.Color = lstStaff.BackColor;
+
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                lstStaff.BackColor = dlg.Color;
+            }
+        }
+
+        private void ApplyListClor()
+        {
+            using FontDialog dlg = new();
+            dlg.Font = lstStaff.Font;
+            dlg.ShowEffects = false;
+
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                lstStaff.Font = dlg.Font;
+            }
+        }
+
+        private void clearAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnToolbarAdd_Click(object sender, EventArgs e)
+        {
 
         }
     }

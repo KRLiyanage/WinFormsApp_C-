@@ -79,27 +79,27 @@
             // newToolStripMenuItem
             // 
             newToolStripMenuItem.Name = "newToolStripMenuItem";
-            newToolStripMenuItem.Size = new Size(224, 26);
+            newToolStripMenuItem.Size = new Size(143, 26);
             newToolStripMenuItem.Text = "New";
             // 
             // openToolStripMenuItem
             // 
             openToolStripMenuItem.Name = "openToolStripMenuItem";
-            openToolStripMenuItem.Size = new Size(224, 26);
+            openToolStripMenuItem.Size = new Size(143, 26);
             openToolStripMenuItem.Text = "Opne";
             openToolStripMenuItem.Click += openToolStripMenuItem_Click;
             // 
             // saveAsToolStripMenuItem
             // 
             saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            saveAsToolStripMenuItem.Size = new Size(224, 26);
+            saveAsToolStripMenuItem.Size = new Size(143, 26);
             saveAsToolStripMenuItem.Text = "Save As";
             saveAsToolStripMenuItem.Click += saveAsToolStripMenuItem_Click;
             // 
             // exitToolStripMenuItem
             // 
             exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            exitToolStripMenuItem.Size = new Size(224, 26);
+            exitToolStripMenuItem.Size = new Size(143, 26);
             exitToolStripMenuItem.Text = "Exit";
             exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
             // 
@@ -115,12 +115,14 @@
             clearAllToolStripMenuItem.Name = "clearAllToolStripMenuItem";
             clearAllToolStripMenuItem.Size = new Size(161, 26);
             clearAllToolStripMenuItem.Text = "Clear All";
+            clearAllToolStripMenuItem.Click += clearAllToolStripMenuItem_Click;
             // 
             // customizeToolStripMenuItem
             // 
             customizeToolStripMenuItem.Name = "customizeToolStripMenuItem";
             customizeToolStripMenuItem.Size = new Size(161, 26);
             customizeToolStripMenuItem.Text = "Customize";
+            customizeToolStripMenuItem.Click += customizeToolStripMenuItem_Click;
             // 
             // viweToolStripMenuItem
             // 
@@ -171,6 +173,7 @@
             btnToolbarAdd.Name = "btnToolbarAdd";
             btnToolbarAdd.Size = new Size(41, 24);
             btnToolbarAdd.Text = "Add";
+            btnToolbarAdd.Click += btnToolbarAdd_Click;
             // 
             // btnToolbarRemove
             // 
