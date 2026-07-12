@@ -110,5 +110,10 @@ namespace StaffDirectory
         {
 
         }
+
+        private void Directory_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

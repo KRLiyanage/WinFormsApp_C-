@@ -52,11 +52,19 @@
             panel1 = new Panel();
             txtSearch = new Button();
             btnSearch = new TextBox();
+            Summary = new TabControl();
+            Directory = new TabPage();
             lstStaff = new ListBox();
+            tabControl = new TabPage();
+            tabPageAppearance = new TabPage();
+            rtbSummary = new RichTextBox();
             menuStrip1.SuspendLayout();
             toolStrip1.SuspendLayout();
             lblStatus.SuspendLayout();
             panel1.SuspendLayout();
+            Summary.SuspendLayout();
+            Directory.SuspendLayout();
+            tabControl.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
@@ -243,20 +251,75 @@
             btnSearch.Size = new Size(559, 27);
             btnSearch.TabIndex = 0;
             // 
+            // Summary
+            // 
+            Summary.Controls.Add(Directory);
+            Summary.Controls.Add(tabControl);
+            Summary.Controls.Add(tabPageAppearance);
+            Summary.Location = new Point(-7, 58);
+            Summary.Name = "Summary";
+            Summary.SelectedIndex = 0;
+            Summary.Size = new Size(991, 450);
+            Summary.TabIndex = 5;
+            // 
+            // Directory
+            // 
+            Directory.Controls.Add(lstStaff);
+            Directory.Location = new Point(4, 29);
+            Directory.Name = "Directory";
+            Directory.Padding = new Padding(3);
+            Directory.Size = new Size(983, 417);
+            Directory.TabIndex = 0;
+            Directory.Text = "Directory";
+            Directory.UseVisualStyleBackColor = true;
+            Directory.Click += Directory_Click;
+            // 
             // lstStaff
             // 
+            lstStaff.Dock = DockStyle.Fill;
             lstStaff.FormattingEnabled = true;
-            lstStaff.Location = new Point(0, 55);
+            lstStaff.Location = new Point(3, 3);
             lstStaff.Name = "lstStaff";
-            lstStaff.Size = new Size(984, 444);
-            lstStaff.TabIndex = 4;
+            lstStaff.Size = new Size(977, 411);
+            lstStaff.TabIndex = 5;
+            // 
+            // tabControl
+            // 
+            tabControl.Controls.Add(rtbSummary);
+            tabControl.Location = new Point(4, 29);
+            tabControl.Name = "tabControl";
+            tabControl.Padding = new Padding(3);
+            tabControl.Size = new Size(983, 417);
+            tabControl.TabIndex = 1;
+            tabControl.Text = "Summary";
+            tabControl.UseVisualStyleBackColor = true;
+            // 
+            // tabPageAppearance
+            // 
+            tabPageAppearance.Location = new Point(4, 29);
+            tabPageAppearance.Name = "tabPageAppearance";
+            tabPageAppearance.Padding = new Padding(3);
+            tabPageAppearance.Size = new Size(983, 417);
+            tabPageAppearance.TabIndex = 2;
+            tabPageAppearance.Text = "Appearance";
+            tabPageAppearance.UseVisualStyleBackColor = true;
+            // 
+            // rtbSummary
+            // 
+            rtbSummary.Dock = DockStyle.Fill;
+            rtbSummary.Location = new Point(3, 3);
+            rtbSummary.Name = "rtbSummary";
+            rtbSummary.ReadOnly = true;
+            rtbSummary.Size = new Size(977, 411);
+            rtbSummary.TabIndex = 0;
+            rtbSummary.Text = "";
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(984, 575);
-            Controls.Add(lstStaff);
+            Controls.Add(Summary);
             Controls.Add(panel1);
             Controls.Add(lblStatus);
             Controls.Add(toolStrip1);
@@ -273,6 +336,9 @@
             lblStatus.PerformLayout();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            Summary.ResumeLayout(false);
+            Directory.ResumeLayout(false);
+            tabControl.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -302,6 +368,11 @@
         private ToolStripButton btnToolbarRemove;
         private ToolStripButton btnToolbarSave;
         private ToolStripButton btnToolbarSearch;
+        private TabControl Summary;
+        private TabPage Directory;
+        private TabPage tabControl;
+        private TabPage tabPageAppearance;
         private ListBox lstStaff;
+        private RichTextBox rtbSummary;
     }
 }
