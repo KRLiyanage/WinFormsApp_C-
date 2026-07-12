@@ -52,11 +52,27 @@
             panel1 = new Panel();
             txtSearch = new Button();
             btnSearch = new TextBox();
+            Summary = new TabControl();
+            Directory = new TabPage();
             lstStaff = new ListBox();
+            tabControl = new TabPage();
+            rtbSummary = new RichTextBox();
+            tabPageAppearance = new TabPage();
+            groupBox2 = new GroupBox();
+            btnChangeBackground = new Button();
+            groupBox1 = new GroupBox();
+            btnChangeFont = new Button();
+            btnChangeColour = new Button();
             menuStrip1.SuspendLayout();
             toolStrip1.SuspendLayout();
             lblStatus.SuspendLayout();
             panel1.SuspendLayout();
+            Summary.SuspendLayout();
+            Directory.SuspendLayout();
+            tabControl.SuspendLayout();
+            tabPageAppearance.SuspendLayout();
+            groupBox2.SuspendLayout();
+            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
@@ -243,20 +259,128 @@
             btnSearch.Size = new Size(559, 27);
             btnSearch.TabIndex = 0;
             // 
+            // Summary
+            // 
+            Summary.Controls.Add(Directory);
+            Summary.Controls.Add(tabControl);
+            Summary.Controls.Add(tabPageAppearance);
+            Summary.Location = new Point(-7, 58);
+            Summary.Name = "Summary";
+            Summary.SelectedIndex = 0;
+            Summary.Size = new Size(991, 450);
+            Summary.TabIndex = 5;
+            // 
+            // Directory
+            // 
+            Directory.Controls.Add(lstStaff);
+            Directory.Location = new Point(4, 29);
+            Directory.Name = "Directory";
+            Directory.Padding = new Padding(3);
+            Directory.Size = new Size(983, 417);
+            Directory.TabIndex = 0;
+            Directory.Text = "Directory";
+            Directory.UseVisualStyleBackColor = true;
+            Directory.Click += Directory_Click;
+            // 
             // lstStaff
             // 
+            lstStaff.Dock = DockStyle.Fill;
             lstStaff.FormattingEnabled = true;
-            lstStaff.Location = new Point(0, 55);
+            lstStaff.Location = new Point(3, 3);
             lstStaff.Name = "lstStaff";
-            lstStaff.Size = new Size(984, 444);
-            lstStaff.TabIndex = 4;
+            lstStaff.Size = new Size(977, 411);
+            lstStaff.TabIndex = 5;
+            // 
+            // tabControl
+            // 
+            tabControl.Controls.Add(rtbSummary);
+            tabControl.Location = new Point(4, 29);
+            tabControl.Name = "tabControl";
+            tabControl.Padding = new Padding(3);
+            tabControl.Size = new Size(983, 417);
+            tabControl.TabIndex = 1;
+            tabControl.Text = "Summary";
+            tabControl.UseVisualStyleBackColor = true;
+            // 
+            // rtbSummary
+            // 
+            rtbSummary.Dock = DockStyle.Fill;
+            rtbSummary.Location = new Point(3, 3);
+            rtbSummary.Name = "rtbSummary";
+            rtbSummary.ReadOnly = true;
+            rtbSummary.Size = new Size(977, 411);
+            rtbSummary.TabIndex = 0;
+            rtbSummary.Text = "";
+            // 
+            // tabPageAppearance
+            // 
+            tabPageAppearance.Controls.Add(groupBox2);
+            tabPageAppearance.Controls.Add(groupBox1);
+            tabPageAppearance.Location = new Point(4, 29);
+            tabPageAppearance.Name = "tabPageAppearance";
+            tabPageAppearance.Padding = new Padding(3);
+            tabPageAppearance.Size = new Size(983, 417);
+            tabPageAppearance.TabIndex = 2;
+            tabPageAppearance.Text = "Appearance";
+            tabPageAppearance.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            groupBox2.Controls.Add(btnChangeBackground);
+            groupBox2.Location = new Point(39, 217);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(485, 174);
+            groupBox2.TabIndex = 1;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "groupBox2";
+            // 
+            // btnChangeBackground
+            // 
+            btnChangeBackground.Location = new Point(126, 75);
+            btnChangeBackground.Name = "btnChangeBackground";
+            btnChangeBackground.Size = new Size(191, 29);
+            btnChangeBackground.TabIndex = 0;
+            btnChangeBackground.Text = "Change Background";
+            btnChangeBackground.UseVisualStyleBackColor = true;
+            btnChangeBackground.Click += btnChangeBackground_Click;
+            // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(btnChangeFont);
+            groupBox1.Controls.Add(btnChangeColour);
+            groupBox1.Location = new Point(39, 30);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(485, 166);
+            groupBox1.TabIndex = 0;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "List Style";
+            // 
+            // btnChangeFont
+            // 
+            btnChangeFont.Location = new Point(286, 60);
+            btnChangeFont.Name = "btnChangeFont";
+            btnChangeFont.Size = new Size(160, 29);
+            btnChangeFont.TabIndex = 1;
+            btnChangeFont.Text = "Change Font";
+            btnChangeFont.UseVisualStyleBackColor = true;
+            btnChangeFont.Click += btnChangeFont_Click;
+            // 
+            // btnChangeColour
+            // 
+            btnChangeColour.Location = new Point(47, 60);
+            btnChangeColour.Name = "btnChangeColour";
+            btnChangeColour.Size = new Size(147, 29);
+            btnChangeColour.TabIndex = 0;
+            btnChangeColour.Text = "Change Colour";
+            btnChangeColour.UseVisualStyleBackColor = true;
+            btnChangeColour.Click += btnChangeColour_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(984, 575);
-            Controls.Add(lstStaff);
+            Controls.Add(Summary);
             Controls.Add(panel1);
             Controls.Add(lblStatus);
             Controls.Add(toolStrip1);
@@ -273,6 +397,12 @@
             lblStatus.PerformLayout();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            Summary.ResumeLayout(false);
+            Directory.ResumeLayout(false);
+            tabControl.ResumeLayout(false);
+            tabPageAppearance.ResumeLayout(false);
+            groupBox2.ResumeLayout(false);
+            groupBox1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -302,6 +432,16 @@
         private ToolStripButton btnToolbarRemove;
         private ToolStripButton btnToolbarSave;
         private ToolStripButton btnToolbarSearch;
+        private TabControl Summary;
+        private TabPage Directory;
+        private TabPage tabControl;
+        private TabPage tabPageAppearance;
         private ListBox lstStaff;
+        private RichTextBox rtbSummary;
+        private GroupBox groupBox1;
+        private GroupBox groupBox2;
+        private Button btnChangeFont;
+        private Button btnChangeColour;
+        private Button btnChangeBackground;
     }
 }
