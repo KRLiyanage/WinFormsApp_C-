@@ -14,5 +14,21 @@ namespace StaffDirectory
         {
             InitializeComponent();
         }
+
+        public string EmployeeId => txtEmployeeId.Text.Trim();
+        public string FullName => txtFullName.Text.Trim();
+        public string Emails => txtEmail.Text.Trim();
+        public string Department => cmbDepartment.SelectedItem?.ToString() ?? "Unknown";
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.OK;
+            this.Close();   
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+            this.Close();
+        }
     }
 }

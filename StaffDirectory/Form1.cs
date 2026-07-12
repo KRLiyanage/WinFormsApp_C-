@@ -108,7 +108,22 @@ namespace StaffDirectory
 
         private void btnToolbarAdd_Click(object sender, EventArgs e)
         {
+            using AddStaffForm dlg = new AddStaffForm();
 
+            if(dlg.ShowDialog() == DialogResult.OK)
+            {
+                string entry = BuildStaffEntry(dlg.EmployeeId, dlg.FullName, dlg.Emails, dlg.Department);
+
+                //_staffEntries.Add(entry);
+                lstStaff.Items.Add(entry);
+
+                //lblStatus.Text = $"{_staffEntries.Count} staff record(s) on record.";
+            }
+        }
+
+        private string BuildStaffEntry(string id, string name, string email, string dept)
+        {
+            return $"[{dept}] {id} — {name} — {email}"; 
         }
 
         private void Directory_Click(object sender, EventArgs e)

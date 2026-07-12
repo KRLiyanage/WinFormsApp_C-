@@ -132,6 +132,7 @@
             btnOK.TabIndex = 3;
             btnOK.Text = "OK";
             btnOK.UseVisualStyleBackColor = true;
+            btnOK.Click += btnOK_Click;
             // 
             // btnCancel
             // 
@@ -142,6 +143,7 @@
             btnCancel.TabIndex = 3;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
             // 
             // AddStaffForm
             // 
