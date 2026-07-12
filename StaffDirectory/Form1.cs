@@ -115,5 +115,39 @@ namespace StaffDirectory
         {
 
         }
+
+        private void btnChangeColour_Click(object sender, EventArgs e)
+        {
+            using ColorDialog dlg = new ColorDialog();
+            dlg.Color = lstStaff.BackColor;
+
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                lstStaff.BackColor = dlg.Color;
+            }
+        }
+
+        private void btnChangeFont_Click(object sender, EventArgs e)
+        {
+            using FontDialog dlg = new FontDialog();
+            dlg.Font = lstStaff.Font;
+            dlg.ShowEffects = false;
+
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                lstStaff.Font = dlg.Font;
+            }
+        }
+
+        private void btnChangeBackground_Click(object sender, EventArgs e)
+        {
+            using ColorDialog dlg = new ColorDialog();
+            dlg.Color = this.BackColor;
+
+            if(dlg.ShowDialog() == DialogResult.OK )
+            {
+                this.BackColor = dlg.Color;
+            }
+        }
     }
 }
