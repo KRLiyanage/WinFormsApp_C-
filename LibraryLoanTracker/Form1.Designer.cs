@@ -176,6 +176,7 @@
             btnToolbarNewLoan.Name = "btnToolbarNewLoan";
             btnToolbarNewLoan.Size = new Size(79, 24);
             btnToolbarNewLoan.Text = "New Loan";
+            btnToolbarNewLoan.Click += btnToolbarNewLoan_Click;
             // 
             // btnToolbarReturn
             // 

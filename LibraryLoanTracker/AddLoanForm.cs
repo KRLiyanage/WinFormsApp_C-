@@ -19,6 +19,9 @@ namespace LibraryLoanTracker
         public DateTime LoanDate => dtpLoanDate.Value.Date;
 
 
+        public DateTime DueDate => BorrowerType == "Staff" ? LoanDate.AddDays(30): LoanDate.AddDays(14);
+
+
         public AddLoanForm()
         {
             InitializeComponent();
@@ -31,12 +34,12 @@ namespace LibraryLoanTracker
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            bool isvalid = true;
+            bool isValid = true;
 
             if(string.IsNullOrWhiteSpace(LoanId))
             {
                 errorProvider1.SetError(txtLoanId, "Long ID cannot be Empty!");
-                isvalid = false;
+                isValid = false;
             }
             else
             {
