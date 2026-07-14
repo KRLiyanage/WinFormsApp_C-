@@ -1,4 +1,4 @@
-namespace StaffDirectory
+namespace LibraryLoanTracker
 {
     internal static class Program
     {
