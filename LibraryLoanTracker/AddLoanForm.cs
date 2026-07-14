@@ -10,6 +10,13 @@ namespace LibraryLoanTracker
 {
     public partial class AddLoanForm : Form
     {
+        public string LoanId => txtLoanId.Text.Trim();
+        public string BookTitle => txtBookTitle.Text.Trim();
+        public string BorrowerName => txtBorrowerName.Text.Trim();
+        public string BorrowerType => cmbBorrowerType.SelectedItem?.ToString()?? "Student";
+        public DateTime LoanDate => dtpLoanDate.Value.Date;
+
+
         public AddLoanForm()
         {
             InitializeComponent();

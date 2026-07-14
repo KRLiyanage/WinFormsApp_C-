@@ -37,7 +37,7 @@
             label2 = new Label();
             txtBookTitle = new TextBox();
             label3 = new Label();
-            textBox1 = new TextBox();
+            txtBorrowerName = new TextBox();
             label4 = new Label();
             cmbBorrowerType = new ComboBox();
             label5 = new Label();
@@ -126,13 +126,13 @@
             label3.Text = "Borrower Name";
             label3.Click += label2_Click;
             // 
-            // textBox1
+            // txtBorrowerName
             // 
-            textBox1.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            textBox1.Location = new Point(211, 172);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(249, 30);
-            textBox1.TabIndex = 2;
+            txtBorrowerName.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtBorrowerName.Location = new Point(211, 172);
+            txtBorrowerName.Name = "txtBorrowerName";
+            txtBorrowerName.Size = new Size(249, 30);
+            txtBorrowerName.TabIndex = 2;
             // 
             // label4
             // 
@@ -199,7 +199,7 @@
             ClientSize = new Size(624, 570);
             Controls.Add(dtpLoanDate);
             Controls.Add(cmbBorrowerType);
-            Controls.Add(textBox1);
+            Controls.Add(txtBorrowerName);
             Controls.Add(txtBookTitle);
             Controls.Add(label6);
             Controls.Add(label5);
@@ -230,7 +230,7 @@
         private Label label2;
         private TextBox txtBookTitle;
         private Label label3;
-        private TextBox textBox1;
+        private TextBox txtBorrowerName;
         private Label label4;
         private ComboBox cmbBorrowerType;
         private Label label5;
