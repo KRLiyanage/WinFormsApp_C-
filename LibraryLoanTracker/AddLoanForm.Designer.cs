@@ -151,7 +151,7 @@
             // 
             cmbBorrowerType.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             cmbBorrowerType.FormattingEnabled = true;
-            cmbBorrowerType.Items.AddRange(new object[] { "Student,", "Staf" });
+            cmbBorrowerType.Items.AddRange(new object[] { "Student", "Staf" });
             cmbBorrowerType.Location = new Point(211, 253);
             cmbBorrowerType.Name = "cmbBorrowerType";
             cmbBorrowerType.Size = new Size(249, 31);

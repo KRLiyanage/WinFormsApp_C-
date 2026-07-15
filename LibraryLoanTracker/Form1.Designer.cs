@@ -92,12 +92,14 @@
             saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             saveToolStripMenuItem.Size = new Size(125, 26);
             saveToolStripMenuItem.Text = "Save";
+            saveToolStripMenuItem.Click += saveToolStripMenuItem_Click;
             // 
             // loadToolStripMenuItem
             // 
             loadToolStripMenuItem.Name = "loadToolStripMenuItem";
             loadToolStripMenuItem.Size = new Size(125, 26);
             loadToolStripMenuItem.Text = "Load";
+            loadToolStripMenuItem.Click += loadToolStripMenuItem_Click;
             // 
             // toolStripSeparator1
             // 
@@ -186,6 +188,7 @@
             btnToolbarReturn.Name = "btnToolbarReturn";
             btnToolbarReturn.Size = new Size(128, 24);
             btnToolbarReturn.Text = "Mark as Returned";
+            btnToolbarReturn.Click += btnToolbarReturn_Click;
             // 
             // btnToolbarSave
             // 
@@ -195,6 +198,7 @@
             btnToolbarSave.Name = "btnToolbarSave";
             btnToolbarSave.Size = new Size(89, 24);
             btnToolbarSave.Text = "Save to File";
+            btnToolbarSave.Click += btnToolbarSave_Click;
             // 
             // statusStrip
             // 
@@ -260,6 +264,7 @@
             lstLoans.Name = "lstLoans";
             lstLoans.Size = new Size(319, 516);
             lstLoans.TabIndex = 0;
+            lstLoans.SelectedIndexChanged += lstLoans_SelectedIndexChanged;
             // 
             // rtbLoanDetail
             // 
@@ -325,6 +330,7 @@
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "LibraryLoanTracker";
+            Load += Form1_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             toolStrip.ResumeLayout(false);
