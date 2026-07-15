@@ -183,5 +183,36 @@ namespace LibraryLoanTracker
         {
             SaveToFile();
         }
+
+        private void LoadFromFile()
+        {
+            try
+            {
+                if (!File.Exists(_dataFilePath)) return;
+                string json = File.ReadAllText(_dataFilePath);
+                var loaded = JsonSerializer.Deserialize<List<LoanRecord>>(json);
+                if (loaded != null)
+                {
+                    _loans.Clear();
+                    _loans.AddRange(loaded);
+                    RefreshAllViews();
+                }
+            }
+            catch (Exception ex) when (ex is JsonException or IOException)
+            {
+                MessageBox.Show($"Load failed:\n{ex.Message}", "Error",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void loadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoadFromFile();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            LoadFromFile();
+        }
     }
 }
