@@ -21,32 +21,32 @@ namespace LibraryLoanTracker
 
         private void btnToolbarNewLoan_Click(object sender, EventArgs e)
         {
-            using (AddLoanForm dialog  = new AddLoanForm())
+            using (AddLoanForm dialog = new AddLoanForm())
             {
-                if(dialog.ShowDialog() == DialogResult.OK)
+                if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    bool duplicate = _loans.Any(l=> l.LoanId == dialog.LoanId);
+                    bool duplicate = _loans.Any(l => l.LoanId == dialog.LoanId);
 
                     if (duplicate)
                     {
                         MessageBox.Show("A loan with this ID already exists.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return; 
+                        return;
                     }
 
                     var record = new LoanRecord
                     {
                         LoanId = dialog.LoanId,
-                        
+
                         BookTitle = dialog.BookTitle,
-                        
+
                         BorrowerName = dialog.BorrowerName,
-                        
+
                         BorrowerType = dialog.BorrowerType,
-                       
+
                         LoanDate = dialog.LoanDate,
-                       
+
                         DueDate = dialog.DueDate,
-                           
+
                         IsReturned = false
                     };
 
@@ -69,9 +69,9 @@ namespace LibraryLoanTracker
         {
             lstLoans.Items.Clear();
 
-            foreach(var  loan in _loans)
+            foreach (var loan in _loans)
             {
-                if(loan.IsReturned == false)
+                if (loan.IsReturned == false)
                 {
                     lstLoans.Items.Add(loan.DisplayText);
                 }
@@ -84,9 +84,9 @@ namespace LibraryLoanTracker
         {
             lstOverdue.Items.Clear();
 
-            foreach(var loan in _loans)
+            foreach (var loan in _loans)
             {
-                if(loan.IsOverdue == true)
+                if (loan.IsOverdue == true)
                 {
                     lstOverdue.Items.Add(loan.DisplayText);
                 }
@@ -117,13 +117,41 @@ namespace LibraryLoanTracker
 
         private void UpdateStatusBar()
         {
-           
+
             int active = _loans.Count(l => !l.IsReturned);
             int overdue = _loans.Count(l => l.IsOverdue);
 
-            
+
             lblStatus.Text = $"{active} active loans | {overdue} overdue";
         }
 
+        private void btnToolbarReturn_Click(object sender, EventArgs e)
+        {
+            if (lstLoans.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select a loan from the list to mark as returned.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            
+            string selectedText = lstLoans.SelectedItem.ToString();
+            string loanId = selectedText.Split('[', ']')[1];
+            LoanRecord loan = _loans.FirstOrDefault(l => l.LoanId == loanId);
+
+            if (loan != null)
+            {
+               
+                if (!loan.IsReturned)
+                {
+                    loan.IsReturned = true;
+                    RefreshAllViews();
+                }
+                else
+                {
+                  
+                    MessageBox.Show("This book has already been returned.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
     }
 }

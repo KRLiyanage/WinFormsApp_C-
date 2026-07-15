@@ -186,6 +186,7 @@
             btnToolbarReturn.Name = "btnToolbarReturn";
             btnToolbarReturn.Size = new Size(128, 24);
             btnToolbarReturn.Text = "Mark as Returned";
+            btnToolbarReturn.Click += btnToolbarReturn_Click;
             // 
             // btnToolbarSave
             // 
