@@ -115,7 +115,15 @@ namespace LibraryLoanTracker
             }
         }
 
+        private void UpdateStatusBar()
+        {
+           
+            int active = _loans.Count(l => !l.IsReturned);
+            int overdue = _loans.Count(l => l.IsOverdue);
 
+            
+            lblStatus.Text = $"{active} active loans | {overdue} overdue";
+        }
 
     }
 }
