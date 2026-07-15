@@ -214,5 +214,34 @@ namespace LibraryLoanTracker
         {
             LoadFromFile();
         }
+
+        
+        private void lstLoans_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+            if (lstLoans.SelectedIndex == -1)
+            {
+                rtbLoanDetail.Clear();
+                return;
+            }
+
+            string selectedText = lstLoans.SelectedItem.ToString();
+            string loanId = selectedText.Split('[', ']')[1];
+
+            LoanRecord loan = _loans.FirstOrDefault(l => l.LoanId == loanId);
+
+            if (loan != null)
+            {
+                string status = loan.IsOverdue ? "OVERDUE" : "ACTIVE";
+
+                rtbLoanDetail.Text = $"Loan ID    : {loan.LoanId}\n" +
+                                     $"Book Title : {loan.BookTitle}\n" +
+                                     $"Borrower   : {loan.BorrowerName}\n" +
+                                     $"Type       : {loan.BorrowerType}\n" +
+                                     $"Loan Date  : {loan.LoanDate.ToShortDateString()}\n" +
+                                     $"Due Date   : {loan.DueDate.ToShortDateString()}\n" +
+                                     $"Status     : {status}";
+            }
+        }
     }
 }
