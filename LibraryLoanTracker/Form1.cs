@@ -59,7 +59,25 @@ namespace LibraryLoanTracker
 
         private void RefreshAllViews()
         {
-            throw new NotImplementedException();
+            RefreshLoansList();
+            RefreshOverdueList();
+            RefreshSummary();
+            UpdateStatusBar();
+        }
+
+        private void RefreshLoansList()
+        {
+            lstLoans.Items.Clear();
+
+            foreach(var  loan in _loans)
+            {
+                if(loan.IsReturned == false)
+                {
+                    lstLoans.Items.Add(loan.DisplayText);
+                }
+            }
+
+            rtbLoanDetail.Clear();
         }
     }
 }
