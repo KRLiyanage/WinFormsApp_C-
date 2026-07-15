@@ -90,8 +90,9 @@
             // saveToolStripMenuItem
             // 
             saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            saveToolStripMenuItem.Size = new Size(125, 26);
+            saveToolStripMenuItem.Size = new Size(224, 26);
             saveToolStripMenuItem.Text = "Save";
+            saveToolStripMenuItem.Click += saveToolStripMenuItem_Click;
             // 
             // loadToolStripMenuItem
             // 
@@ -196,6 +197,7 @@
             btnToolbarSave.Name = "btnToolbarSave";
             btnToolbarSave.Size = new Size(89, 24);
             btnToolbarSave.Text = "Save to File";
+            btnToolbarSave.Click += btnToolbarSave_Click;
             // 
             // statusStrip
             // 

@@ -1,4 +1,5 @@
 using Microsoft.VisualBasic;
+using System.Text.Json;
 
 namespace LibraryLoanTracker
 {
@@ -133,14 +134,14 @@ namespace LibraryLoanTracker
                 return;
             }
 
-            
+
             string selectedText = lstLoans.SelectedItem.ToString();
             string loanId = selectedText.Split('[', ']')[1];
             LoanRecord loan = _loans.FirstOrDefault(l => l.LoanId == loanId);
 
             if (loan != null)
             {
-               
+
                 if (!loan.IsReturned)
                 {
                     loan.IsReturned = true;
@@ -148,10 +149,39 @@ namespace LibraryLoanTracker
                 }
                 else
                 {
-                  
+
                     MessageBox.Show("This book has already been returned.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
+        }
+
+        private void SaveToFile()
+        {
+            try
+            {
+                string dir = Path.GetDirectoryName(_dataFilePath)!;
+                if (!Directory.Exists(dir))
+                    Directory.CreateDirectory(dir);
+                string json = JsonSerializer.Serialize(_loans,
+                new JsonSerializerOptions { WriteIndented = true });
+                File.WriteAllText(_dataFilePath, json);
+                lblStatus.Text = $"Saved--{_loans.Count} records";
+            }
+            catch (IOException ex)
+            {
+                MessageBox.Show($"Save failed:\n{ex.Message}", "Error",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnToolbarSave_Click(object sender, EventArgs e)
+        {
+            SaveToFile();
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveToFile();
         }
     }
 }
