@@ -79,5 +79,20 @@ namespace LibraryLoanTracker
 
             rtbLoanDetail.Clear();
         }
+
+        private void RefreshOverdueList()
+        {
+            lstOverdue.Items.Clear();
+
+            foreach(var loan in _loans)
+            {
+                if(loan.IsOverdue == true)
+                {
+                    lstOverdue.Items.Add(loan.DisplayText);
+                }
+            }
+        }
+
+
     }
 }
