@@ -93,6 +93,29 @@ namespace LibraryLoanTracker
             }
         }
 
+        private void RefreshSummary()
+        {
+            int total = _loans.Count;
+            int active = _loans.Count(l => !l.IsReturned);
+            int returned = _loans.Count(l => l.IsReturned);
+            int overdue = _loans.Count(l => l.IsOverdue);
+
+            rtbSummary.Text = $"Total loans issued : {total}\n" +
+                      $"Currently on loan   : {active}\n" +
+                      $"Returned            : {returned}\n" +
+                      $"Overdue             : {overdue}\n\n" +
+                      "--- Overdue Records ---\n";
+
+            foreach (var loan in _loans)
+            {
+                if (loan.IsOverdue)
+                {
+                    rtbSummary.AppendText(loan.DisplayText + " | OVERDUE\n");
+                }
+            }
+        }
+
+
 
     }
 }
