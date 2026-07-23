@@ -34,7 +34,7 @@ namespace LibraryLoanTracker
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            bool isValid = true;
+             isValid = true;
 
             if(string.IsNullOrWhiteSpace(LoanId))
             {
