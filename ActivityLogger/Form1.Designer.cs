@@ -32,6 +32,7 @@
             btnTest = new Button();
             lblCurrentWindow = new Label();
             timer1 = new System.Windows.Forms.Timer(components);
+            lstLog = new ListBox();
             SuspendLayout();
             // 
             // btnTest
@@ -54,11 +55,27 @@
             lblCurrentWindow.Size = new Size(0, 25);
             lblCurrentWindow.TabIndex = 1;
             // 
+            // timer1
+            // 
+            timer1.Enabled = true;
+            timer1.Interval = 1000;
+            timer1.Tick += timer1_Tick;
+            // 
+            // lstLog
+            // 
+            lstLog.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lstLog.FormattingEnabled = true;
+            lstLog.Location = new Point(175, 178);
+            lstLog.Name = "lstLog";
+            lstLog.Size = new Size(441, 204);
+            lstLog.TabIndex = 2;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(821, 462);
+            Controls.Add(lstLog);
             Controls.Add(lblCurrentWindow);
             Controls.Add(btnTest);
             Name = "Form1";
@@ -73,5 +90,6 @@
         private Button btnTest;
         private Label lblCurrentWindow;
         private System.Windows.Forms.Timer timer1;
+        private ListBox lstLog;
     }
 }
