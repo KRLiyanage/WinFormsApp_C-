@@ -43,9 +43,9 @@
             // 
             lstLog.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lstLog.FormattingEnabled = true;
-            lstLog.Location = new Point(148, 89);
+            lstLog.Location = new Point(46, 40);
             lstLog.Name = "lstLog";
-            lstLog.Size = new Size(499, 254);
+            lstLog.Size = new Size(712, 379);
             lstLog.TabIndex = 2;
             // 
             // Form1

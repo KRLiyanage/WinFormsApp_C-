@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.IO;
 using System.Windows.Forms;
 
 namespace ActivityLogger
@@ -11,11 +11,13 @@ namespace ActivityLogger
         private string _lastTitle = string.Empty;
         private DateTime _lastSwitchTime = DateTime.Now;
 
+       
+        private int _errorCount = 0;
+
         public Form1()
         {
             InitializeComponent();
 
-            // Saved Logs Load කර ගැනීම
             _log = StorageHelper.LoadLog();
             foreach (var entry in _log)
             {
@@ -28,41 +30,56 @@ namespace ActivityLogger
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            IntPtr handle = NativeMethods.GetForegroundWindow();
-            string currentTitle = string.Empty;
-
-            if (handle != IntPtr.Zero)
-            {
-                StringBuilder sb = new StringBuilder(256);
-                NativeMethods.GetWindowText(handle, sb, sb.Capacity);
-                currentTitle = sb.ToString();
-            }
-
             
-           
-
-            if (currentTitle != _lastTitle)
+            try
             {
-                if (!string.IsNullOrEmpty(_lastTitle))
+                string currentTitle = string.Empty;
+
+               
+                if (NativeMethods.TryGetForegroundWindowTitle(out string title))
                 {
-                    int elapsedSeconds = (int)(DateTime.Now - _lastSwitchTime).TotalSeconds;
-
-                    WindowLogEntry entry = new WindowLogEntry
-                    {
-                        WindowTitle = _lastTitle,
-                        StartTime = _lastSwitchTime,
-                        DurationSeconds = elapsedSeconds
-                    };
-
-                    _log.Add(entry);
-
-                    string formattedEntry = $"[{entry.StartTime:HH:mm:ss}] {entry.WindowTitle} ({entry.DurationSeconds}s)";
-                    lstLog.Items.Add(formattedEntry);
-                    lstLog.TopIndex = lstLog.Items.Count - 1;
+                    currentTitle = title;
                 }
 
-                _lastTitle = currentTitle;
-                _lastSwitchTime = DateTime.Now;
+               
+
+                if (currentTitle != _lastTitle)
+                {
+                    if (!string.IsNullOrEmpty(_lastTitle))
+                    {
+                        int elapsedSeconds = (int)(DateTime.Now - _lastSwitchTime).TotalSeconds;
+
+                        WindowLogEntry entry = new WindowLogEntry
+                        {
+                            WindowTitle = _lastTitle,
+                            StartTime = _lastSwitchTime,
+                            DurationSeconds = elapsedSeconds
+                        };
+
+                        _log.Add(entry);
+
+                        string formattedEntry = $"[{entry.StartTime:HH:mm:ss}] {entry.WindowTitle} ({entry.DurationSeconds}s)";
+                        lstLog.Items.Add(formattedEntry);
+                        lstLog.TopIndex = lstLog.Items.Count - 1;
+                    }
+
+                    _lastTitle = currentTitle;
+                    _lastSwitchTime = DateTime.Now;
+                }
+            }
+            catch (Exception ex)
+            {
+                
+                _errorCount++;
+                this.Text = $"Activity Logger - Errors: {_errorCount}";
+
+               
+                string logPath = Path.Combine(
+                    Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                    "ActivityLogger",
+                    "exceptions.log"
+                );
+                File.AppendAllText(logPath, $"[{DateTime.Now}] Exception: {ex.Message}{Environment.NewLine}");
             }
         }
 
@@ -70,7 +87,6 @@ namespace ActivityLogger
         {
             try
             {
-               
                 if (!string.IsNullOrEmpty(_lastTitle))
                 {
                     int elapsedSeconds = (int)(DateTime.Now - _lastSwitchTime).TotalSeconds;
