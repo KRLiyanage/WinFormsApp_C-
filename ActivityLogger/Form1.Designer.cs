@@ -29,31 +29,9 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            btnTest = new Button();
-            lblCurrentWindow = new Label();
             timer1 = new System.Windows.Forms.Timer(components);
             lstLog = new ListBox();
             SuspendLayout();
-            // 
-            // btnTest
-            // 
-            btnTest.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnTest.Location = new Point(115, 97);
-            btnTest.Name = "btnTest";
-            btnTest.Size = new Size(94, 46);
-            btnTest.TabIndex = 0;
-            btnTest.Text = "Click";
-            btnTest.UseVisualStyleBackColor = true;
-            btnTest.Click += btnTest_Click;
-            // 
-            // lblCurrentWindow
-            // 
-            lblCurrentWindow.AutoSize = true;
-            lblCurrentWindow.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblCurrentWindow.Location = new Point(379, 109);
-            lblCurrentWindow.Name = "lblCurrentWindow";
-            lblCurrentWindow.Size = new Size(0, 25);
-            lblCurrentWindow.TabIndex = 1;
             // 
             // timer1
             // 
@@ -65,9 +43,9 @@
             // 
             lstLog.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lstLog.FormattingEnabled = true;
-            lstLog.Location = new Point(175, 178);
+            lstLog.Location = new Point(148, 89);
             lstLog.Name = "lstLog";
-            lstLog.Size = new Size(441, 204);
+            lstLog.Size = new Size(499, 254);
             lstLog.TabIndex = 2;
             // 
             // Form1
@@ -76,19 +54,13 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(821, 462);
             Controls.Add(lstLog);
-            Controls.Add(lblCurrentWindow);
-            Controls.Add(btnTest);
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "ActivityLogger";
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
-
-        private Button btnTest;
-        private Label lblCurrentWindow;
         private System.Windows.Forms.Timer timer1;
         private ListBox lstLog;
     }

@@ -13,21 +13,7 @@ namespace ActivityLogger
             InitializeComponent();
         }
 
-        private void btnTest_Click(object sender, EventArgs e)
-        {
-
-            IntPtr handle = NativeMethods.GetForegroundWindow();
-
-            if (handle != IntPtr.Zero)
-            {
-                StringBuilder sb = new StringBuilder(256);
-
-                NativeMethods.GetWindowText(handle, sb, sb.Capacity);
-
-                lblCurrentWindow.Text = sb.ToString();
-            }
-
-        }
+        
 
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -41,7 +27,7 @@ namespace ActivityLogger
                 currentTitle = sb.ToString();
             }
 
-            lblCurrentWindow.Text = currentTitle;
+           
 
             if (currentTitle != _lastTitle)
             {
